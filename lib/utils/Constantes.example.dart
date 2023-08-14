@@ -1,3 +1,3 @@
 class Constantes {
-  static const String BASE_URL = "YOUR_IP";
+  static const String BASE_URL = "http://YOUR_IP:BACKEND_PORT";
 }
