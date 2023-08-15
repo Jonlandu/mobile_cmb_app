@@ -56,7 +56,8 @@ class _BienvenuPageState extends State<BienvenuPage> {
               fontWeight: FontWeight.w600,
             )),
 
-        trailingFunction: () {},
+        trailingFunction: () {
+        },
         totalPage: 4,
         pageBackgroundColor: Colors.white,
         headerBackgroundColor: Colors.transparent,
@@ -249,6 +250,7 @@ class _BienvenuPageState extends State<BienvenuPage> {
               ),
             ),
           ),
-        ]);
+        ]
+    );
   }
 }
