@@ -49,6 +49,9 @@ class _BienvenuPageState extends State<BienvenuPage> {
             backgroundColor: Color(0xFF40BFFF),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12)))),
+        onFinish: () {
+          _naviguerVersLoginPage();
+        },
         skipTextButton: Text('Passer',
             style: TextStyle(
               fontSize: 16,
@@ -62,23 +65,25 @@ class _BienvenuPageState extends State<BienvenuPage> {
         pageBackgroundColor: Colors.white,
         headerBackgroundColor: Colors.transparent,
         background: [
-          Image.asset(
-            'assets/cmblogo.jpg',
-            height: 400,
+          Container(
+            child: Image.asset(
+              'assets/cmblogo.jpg',
+              height: 0,
+            ),
           ),
           Image.asset(
             'assets/cmblogo.jpg',
-            height: 400,
+            height: 0,
             //width: 350,
           ),
           Image.asset(
             'assets/cmblogo.jpg',
-            height: 350,
+            height: 0,
             //width: 400,
           ),
           Image.asset(
             'assets/cmblogo.jpg',
-            height: 350,
+            height: 0,
             //width: 400,
           ),
         ],
@@ -199,7 +204,7 @@ class _BienvenuPageState extends State<BienvenuPage> {
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 100,),
+                  SizedBox(height: 20,),
                   Center(
                     child: Text(
                       'Evangile Eternel',
@@ -210,7 +215,7 @@ class _BienvenuPageState extends State<BienvenuPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 60,),
+                  SizedBox(height: 40,),
                   Text(
                     'Centre Missionnaire de Binza',
                     textAlign: TextAlign.center,
@@ -220,16 +225,19 @@ class _BienvenuPageState extends State<BienvenuPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 60,),
-                  Image.asset('assets/cmblogo.jpg'),
-                  SizedBox(height: 60,),
+                  SizedBox(height: 30,),
+                  Container(
+                    height: 200,
+                      child: Image.asset('assets/cmblogo.jpg')
+                  ),
+                  SizedBox(height: 30,),
 
                   Text(
                     'Cette bonne nouvelle du royaume sera prêchée dans le monde entier, pour servir de témoignage à toutes les nations. Alors viendra la fin.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 16,
+                      fontSize: 18,
                     ),
                   ),
                   SizedBox(height: 20,),

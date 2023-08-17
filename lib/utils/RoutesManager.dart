@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/connexion/LoginPage.dart';
+import '../pages/connexion/RegisterPage.dart';
 import '../pages/welcome/BienvenuPage.dart';
 import '../pages/welcome/SplashScreen.dart';
 import 'Routes.dart';
@@ -13,6 +14,8 @@ class RoutesManager {
         return MaterialPageRoute(builder: (_) => BienvenuPage());
       case Routes.LoginPageRoutes:
         return MaterialPageRoute(builder: (_) => LoginPage());
+      case Routes.RegisterPageRoutes:
+        return MaterialPageRoute(builder: (_) => RegisterPage());
     }
   }
 }

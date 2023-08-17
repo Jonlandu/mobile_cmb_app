@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 4),
     );
     _animation = CurvedAnimation(
       parent: _animationController,
@@ -58,22 +58,16 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     color: Color(0xFF40BFFF),
                     shape: BoxShape.circle,
                   ),
-                  child: Center(
-                    child: Image.asset("assets/cmblogo.jpg"),
+                  child: Container(
+                    child: Center(
+                      child: Image.asset("assets/cmblogo.jpg"),
+                    ),
                   ),
                 );
               },
             ),
           ),
-          Positioned(
-            bottom: 20,
-            right: 20,
-            child: Image.asset(
-              "assets/cmblogo.jpg",
-              width: 25,
-              height: 25,
-            ),
-          ),
+
         ],
       ),
     );
