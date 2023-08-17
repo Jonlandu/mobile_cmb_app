@@ -22,6 +22,8 @@ class _RegisterPageState extends State<RegisterPage> {
   var name = TextEditingController();
   var email = TextEditingController();
   var telephone = TextEditingController();
+  var pays = TextEditingController();
+  var ville = TextEditingController();
   var password = TextEditingController();
   var password_confirm = TextEditingController();
 
@@ -47,6 +49,8 @@ class _RegisterPageState extends State<RegisterPage> {
       'name': name.text,
       'email': email.text,
       'telephone': telephone.text,
+      'pays': pays.text,
+      'ville': ville.text,
       'temp': 0,
       'password': password.text,
       'password_confirmation': password_confirm.text,
@@ -83,7 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: 50,),
+                    SizedBox(height: 30,),
                     Icon(
                       Icons.lock,
                       size: 100,
@@ -96,7 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontSize: 16,
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(height: 10,),
                     Container(
                       alignment: Alignment.center,
                     ),
@@ -105,19 +109,27 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Text("Créer un compte ", style: TextStyle(fontSize: 29,fontWeight: FontWeight.w500,color: Color(0xff000000),height: 1.1725)),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     ChampSaisie(ctrl: name, label: "Nom complet", required: true),
                     SizedBox(
-                      height: 15,
+                      height: 4,
                     ),
                     ChampSaisie(ctrl: email, label: "Email", required: true),
                     SizedBox(
-                      height: 15,
+                      height: 4,
                     ),
                     ChampSaisie(ctrl: telephone, label: "Téléphone", required: true),
                     SizedBox(
-                      height: 15,
+                      height: 4,
+                    ),
+                    ChampSaisie(ctrl: pays, label: "Pays", required: true),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    ChampSaisie(ctrl: ville, label: "Ville", required: true),
+                    SizedBox(
+                      height: 4,
                     ),
                     ChampSaisie(
                         ctrl: password,
@@ -125,7 +137,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         required: true,
                         isPassword: true),
                     SizedBox(
-                      height: 15,
+                      height: 4,
                     ),
                     ChampSaisie(
                         ctrl: password_confirm,
@@ -133,7 +145,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         required: true,
                         isPassword: true),
                     _textError(),
-                    SizedBox(height: 20,),
+                    SizedBox(height: 3,),
                     _buttonWidget(context),
                     SizedBox(
                       height: 8,
@@ -163,7 +175,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         },
                       ),
                     ),
-                    SizedBox(height: 20,)
+                    SizedBox(height: 15,)
                   ],
                 ),
               ),
@@ -172,10 +184,13 @@ class _RegisterPageState extends State<RegisterPage> {
           Positioned(
             bottom: 20,
             right: 20,
-            child: Image.asset(
-              "assets/cmblogo.jpg",
-              width: 25,
-              height: 25,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                "assets/cmblogo.jpg",
+                width: 40,
+                height: 40,
+              ),
             ),
           ),
         ],
@@ -215,7 +230,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget _buttonWidget(BuildContext ctx) {
     return Container(
       width: 500,
-      height: 50,
+      height: 40,
       child: ElevatedButton(
         onPressed: ()=>registerPressed(),
         child: Text("Créer un compte",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),

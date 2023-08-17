@@ -58,9 +58,10 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     color: Color(0xFF40BFFF),
                     shape: BoxShape.circle,
                   ),
-                  child: Container(
-                    child: Center(
-                      child: Image.asset("assets/cmblogo.jpg"),
+                  child: Center(
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset("assets/cmblogo.jpg")
                     ),
                   ),
                 );

@@ -1,11 +1,15 @@
-import 'package:flutter/material.dart';
+"import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../controllers/UserCtrl.dart';
 import '../../utils/StockageKeys.dart';
+import '../downloading/DownloadingPage.dart';
+import '../messaging/MessengerPage.dart';
+import '../others/AccueilPage.dart';
+import '../others/EmissionPage.dart';
+import '../user/ProfilPage.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -15,29 +19,31 @@ class _HomePageState extends State<HomePage> {
 
   int _currentIndex=0;
   Color other = Colors.black;
-  Color selectedItem = Colors.orange;
+  Color selectedItem = Color(0xFF40BFFF);
   GetStorage box = GetStorage();
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      var userCtrl = context.read<UserCtrl>();
-      userCtrl.recuperDataAPI();
+      /*var userCtrl = context.read<UserCtrl>();
+      userCtrl.recuperDataAPI();*/
     });
   }
-  /*final pages=[
-    ArticlesPage(),
-    ListeConversationPage(),
-    ProfilPage()
-  ];*/
+  final pages=[
+    AccueilPage(),
+    /*DownloadingPage(),
+    EmissionPage(),
+    MessengerPage(),
+    ProfilPage()*/
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
-      //children: pages,
+        children: pages,
       ),
       bottomNavigationBar: _bottomNav(),
     );
@@ -56,23 +62,31 @@ class _HomePageState extends State<HomePage> {
           icon: Icon(Icons.home),
           label: 'Accueil',
         ),
+        /*BottomNavigationBarItem(
+          icon: Icon(Icons.download),
+          label: 'Téléchargement',
+        ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.chat),
-          label: 'Message',
+          icon: Icon(Icons.broadcast_on_home),
+          label: 'Emission',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.message),
+          label: 'Messenger',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label:
-             userCtrl.user?.temp==1 && tkn==null  ? 'Profile' : 'Connexion',
-        ),
+          label: 'Profile',
+        ),*/
       ],
       onTap: (int index) {
         setState(() {
           _currentIndex = index;
           other = Colors.black;
-          selectedItem = Colors.orange;
+          selectedItem = Color(0xFF40BFFF);
         });
       },
     );
   }
 }
+"

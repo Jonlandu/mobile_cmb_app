@@ -153,10 +153,13 @@ class _LoginPageState extends State<LoginPage> {
           Positioned(
             bottom: 20,
             right: 20,
-            child: Image.asset(
-              "assets/cmblogo.jpg",
-              width: 25,
-              height: 25,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                "assets/cmblogo.jpg",
+                width: 40,
+                height: 40,
+              ),
             ),
           ),
         ],
