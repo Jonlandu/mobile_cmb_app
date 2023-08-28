@@ -36,7 +36,7 @@ class _AccueilPageState extends State<AccueilPage> {
           ),
         ],
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF40BFFF),
       elevation: 0,
     );
   }

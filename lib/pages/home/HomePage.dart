@@ -1,15 +1,16 @@
-"import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../controllers/UserCtrl.dart';
 import '../../utils/StockageKeys.dart';
 import '../downloading/DownloadingPage.dart';
-import '../messaging/MessengerPage.dart';
+import '../messaging/ContactsScreenPage.dart';
 import '../others/AccueilPage.dart';
 import '../others/EmissionPage.dart';
 import '../user/ProfilPage.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -26,16 +27,16 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      /*var userCtrl = context.read<UserCtrl>();
-      userCtrl.recuperDataAPI();*/
+      var userCtrl = context.read<UserCtrl>();
+      userCtrl.recuperDataAPI();
     });
   }
   final pages=[
     AccueilPage(),
-    /*DownloadingPage(),
+    DownloadingPage(),
     EmissionPage(),
-    MessengerPage(),
-    ProfilPage()*/
+    ContactsScreenPage(),
+    ProfilPage(),
   ];
 
   @override
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
           icon: Icon(Icons.home),
           label: 'Accueil',
         ),
-        /*BottomNavigationBarItem(
+        BottomNavigationBarItem(
           icon: Icon(Icons.download),
           label: 'Téléchargement',
         ),
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profile',
-        ),*/
+        ),
       ],
       onTap: (int index) {
         setState(() {
@@ -89,4 +90,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-"

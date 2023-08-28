@@ -23,7 +23,9 @@ Widget ChampSaisie(
           border: _bordure(Colors.orange),
           fillColor: Colors.grey.shade200,
           focusedBorder: _bordure(Colors.grey),
-          enabledBorder: _bordure(Colors.grey)));
+          enabledBorder: _bordure(Colors.grey),
+      )
+  );
 }
 
 OutlineInputBorder _bordure(MaterialColor _color) {
