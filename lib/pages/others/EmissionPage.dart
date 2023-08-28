@@ -44,11 +44,11 @@ class _EmissionPageState extends State<EmissionPage> {
               children: [
                 SizedBox(height: 25,),
                 _audioBrodcast(),
-                SizedBox(height: 10,),
+                SizedBox(height: 3,),
                 _youTubeLivestream(),
-                SizedBox(height: 10,),
+                SizedBox(height: 3,),
                 _facebookLivestream(),
-                SizedBox(height: 250,),
+                SizedBox(height: 200,),
                 Align(
                   alignment: Alignment.bottomCenter,
                     child: _ecriture()
@@ -146,7 +146,7 @@ class _EmissionPageState extends State<EmissionPage> {
                   ),
                 ],
               ),
-              SizedBox(width: 20,),
+              SizedBox(width: 10,),
               Expanded(child: Container(height: 50, child: Image.asset("assets/youtube.png")))
             ],
           ),
