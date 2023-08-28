@@ -38,12 +38,12 @@ class _ProfilPageState extends State<ProfilPage> {
   Widget build(BuildContext context) {
     var token = box.read(StockageKeys.tokenKey);
     var ctrl = context.watch<UserCtrl>();
-    return ctrl.user?.temp!=1 && token!=null? Scaffold(
+    return Scaffold(
       body: _body(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Profile'),
-        backgroundColor: Colors.black,
+        title: Text('Profil'),
+        backgroundColor: Color(0xFF40BFFF),
         actions: [
           Padding(
             padding: const EdgeInsets.all(15),
@@ -51,9 +51,8 @@ class _ProfilPageState extends State<ProfilPage> {
           )
         ],
       ),
-    ) : Scaffold(
-      body: _noconnect(),
     );
+
   }
 
   Widget _body() {
@@ -132,26 +131,8 @@ class _ProfilPageState extends State<ProfilPage> {
               padding: EdgeInsets.all(10),
               shrinkWrap: true,
               children: [
-                box.read(StockageKeys.tokenKey) != null ? ListTile(
-                  title: Text('Mes annonces et statistique',
-                      style: TextStyle(
-                        fontSize: 14,
-                      )),
-                  leading: Icon(
-                    Icons.analytics_outlined,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.black,
-                    size: 20,
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, Routes.DashboardPageRoutes);
-                  },
-                ):ListTile(
-                  title: Text('Mes publications',
+                ListTile(
+                  title: Text('Dashboard',
                       style: TextStyle(
                         fontSize: 14,
                       )),
@@ -165,26 +146,9 @@ class _ProfilPageState extends State<ProfilPage> {
                     color: Colors.black,
                     size: 20,
                   ),
-                  onTap: () {},
-                ),
-                ListTile(
-                  title: Text(
-                    'Mes favoris',
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                  leading: Icon(
-                    Icons.favorite,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.black,
-                    size: 20,
-                  ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.DashboardPageRoutes);
+                  },
                 ),
                 ListTile(
                   title: Text(
@@ -259,6 +223,27 @@ class _ProfilPageState extends State<ProfilPage> {
                 ),
                 ListTile(
                   title: Text(
+                    'Mettre à jour le Profil',
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
+                  ),
+                  leading: Icon(
+                    Icons.create,
+                    color: Colors.black,
+                    size: 25,
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black,
+                    size: 20,
+                  ),
+                  onTap: () {
+                    ouvrirDialogModifierProfil(context);
+                  },
+                ),
+                ListTile(
+                  title: Text(
                     'Déconnexion',
                     style: TextStyle(
                       fontSize: 14,
@@ -278,7 +263,8 @@ class _ProfilPageState extends State<ProfilPage> {
                     ouvrirDialog(context);
                   },
                 ),
-              ]),
+              ]
+          ),
         ),
       ],
     );
@@ -304,12 +290,12 @@ class _ProfilPageState extends State<ProfilPage> {
             ),
             new TextButton(
               child: new Text(
-                "Confirmer", style: TextStyle(color: Colors.orange),),
+                "Confirmer", style: TextStyle(color: Color(0xFF40BFFF)),),
               onPressed: () {
                 Navigator.pop(context, true);
                 auth.logout({});
                 box.remove(StockageKeys.tokenKey);
-                Navigator.popAndPushNamed(context, Routes.HomePagePageRoutes);
+                Navigator.popAndPushNamed(context, Routes.LoginPageRoutes);
               },
             ),
           ],
@@ -323,6 +309,42 @@ class _ProfilPageState extends State<ProfilPage> {
     }
   }
 
+  ouvrirDialogModifierProfil(context) async {
+    bool? resulat = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        var auth = context.watch<AuthentificationCtrl>();
+        return AlertDialog(
+          title: Text("Mettre à jour le Profil"),
+          content: new Text("Voulez-vous vraiment mettre à jour votre Profil ?"),
+          actions: <Widget>[
+            TextButton(
+              child: new Text(
+                "Annuler",
+                style: TextStyle(color: Colors.grey),
+              ),
+              onPressed: () {
+                Navigator.pop(context, false);
+              },
+            ),
+            new TextButton(
+              child: new Text(
+                "Confirmer", style: TextStyle(color: Color(0xFF40BFFF)),),
+              onPressed: () {
+                Navigator.popAndPushNamed(context, Routes.UpdateProfilPageRoutes);
+              },
+            ),
+          ],
+        );
+      },
+    );
+
+    if (resulat != null) {
+      var message = !resulat ? "Mise à jour annulée" : "Mise à jour";
+      showSnackBar(context, message);
+    }
+  }
+
   showSnackBar(context, String message) {
     final scaffold = ScaffoldMessenger.of(context);
     scaffold.showSnackBar(SnackBar(
@@ -332,43 +354,5 @@ class _ProfilPageState extends State<ProfilPage> {
           textColor: Colors.orange,
           onPressed: scaffold.hideCurrentSnackBar),
     ));
-  }
-
-  Widget _noconnect(){
-    return Stack(
-      children: [
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset("assets/empty.gif"),
-              SizedBox(height: 20.0),
-              SizedBox(height: 10.0),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.LoginPageRoutes);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
-                child: Text('Se connecter'),
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          bottom: 20,
-          right: 20,
-          child: Image.asset(
-            "assets/app_icon2.png",
-            width: 25,
-            height: 25,
-          ),
-        ),
-      ],
-    );
   }
 }

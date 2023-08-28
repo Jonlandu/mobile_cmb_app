@@ -68,7 +68,19 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               },
             ),
           ),
-
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                "Centre Missionnaire de Binza",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

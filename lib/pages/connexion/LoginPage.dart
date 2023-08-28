@@ -49,7 +49,8 @@ class _LoginPageState extends State<LoginPage> {
     isVisible = false;
     setState(() {});
     print(res.status);
-    if (res.status) {
+    Navigator.popAndPushNamed(context, Routes.HomePagePageRoutes);
+    /*if (res.status) {
       await Future.delayed(Duration(seconds: 1));
       setState(() {});
       Navigator.popAndPushNamed(context, Routes.HomePagePageRoutes);
@@ -58,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
       res.isException == true ? res.errorMsg : (res.data?['message']);
       Message.afficherSnack(context, msg);
 
-    }
+    }*/
     return;
   }
 

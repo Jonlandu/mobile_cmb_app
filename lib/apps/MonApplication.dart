@@ -23,7 +23,7 @@ class MonApplication extends StatelessWidget {
         navigatorKey: alice.getNavigatorKey(),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RoutesManager.route,
-        initialRoute: Routes.HomePagePageRoutes,
+        initialRoute: Routes.SplashPageRoutes,
       ),
     );
   }

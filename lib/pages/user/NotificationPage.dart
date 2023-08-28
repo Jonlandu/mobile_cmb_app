@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class NotificationPage extends StatelessWidget {
   final List<String> notifications = [
-    "Exaucé vous a envoyé un message",
+    "Abraham vous a envoyé un message",
     "Josué a contacté votre article 'Ordinateur'",
-    "Becker a partagé votre publication",
-    "Aimée a répondu à votre message",
-    "Vous avez créé(e) un article",
+    "Mardoché a partagé votre publication",
+    "Baraka a répondu à votre message",
+    "CMB publie une prédication",
   ];
 
   @override
@@ -20,11 +20,11 @@ class NotificationPage extends StatelessWidget {
             },
           ),
           title: Text('Notification'),
-          backgroundColor: Colors.black,
+          backgroundColor: Color(0xFF40BFFF),
           actions: [
             Padding(
               padding: const EdgeInsets.all(15),
-              child: Icon(Icons.density_medium),
+              child: Icon(Icons.search),
             )
           ]),
       body: ListView.builder(
